@@ -30,6 +30,49 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Movie</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Point</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
+     
+        <a class="nav-item dropdown">
+        
+        
+        
+        
+        
+                        <!-- Authentication Links -->
+                        @guest
+                            <a class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </a>
+                        @else
+                            <a class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </a>
+                        @endguest
+                    
+                </div>
+            </div>
+        </nav>
+      
+      
+        
+        
+        
+        
+        
+        
         
       </div>
     </nav>
@@ -127,6 +170,11 @@
       </div>
     </footer>
 
+      
+      
+ 
+                    
+      
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
