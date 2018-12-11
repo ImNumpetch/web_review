@@ -79,7 +79,7 @@
     {{csrf_field()}}
 <!--name-->
     catagory
-    <select id="example-1to10" name="rating" autocomplete="off" >
+    <select id="cat1" name="catagory" autocomplete="off" >
         <option value="Novel" selected="selected">Novel</option>
         <option value="Cartoon">Cartoon</option>
         <option value="Music">Music</option>
@@ -90,7 +90,7 @@
     <td>
     <!--rating--> 
     
-    Rating : <select id="example-1to10" name="rating" autocomplete="off" >
+    Rating : <select id="rating1" name="rating" autocomplete="off" >
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
