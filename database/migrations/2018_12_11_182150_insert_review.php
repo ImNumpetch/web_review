@@ -14,10 +14,10 @@ class InsertReview extends Migration
     public function up()
     {
         Schema::create('reviews', function (Blueprint $table) {
-            
+            $table->string('nameContent');
             $table->string('type');
-            $table->string('user_comment');
             $table->string('text_comment');
+            $table->string('authorName');
             $table->integer('rate');
             $table->integer('buy');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
