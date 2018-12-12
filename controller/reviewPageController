@@ -35,17 +35,18 @@ class reviewPageController extends Controller
     public function store(Request $req)
     {
     
+        
+        $name_content = $req->{'nameContent'};   
         $type = $req->{'catagory'};
-        $user_comment = $req->{'username'};
         $text_comment = $req->{'comment'};
+        $author_name =$req->{'authorName'};
         $rate = $req->{'rating'};
         $buy = $req->{'buy'};
         $creat=  date('Y-m-d G:i:s', mktime(0, 0, 0, 7, 1, 2000));
        
-        $data=array('type'=>$type,'user_comment'=>$user_comment,'text_comment'=>$text_comment,'rate'=>$rate,'buy'=>$buy,'created_at'=>$creat);
+        $data=array('nameContent'=>$name_content,'type'=>$type,'text_comment'=>$text_comment,'authorName'=>$author_name,'rate'=>$rate,'buy'=>$buy,'created_at'=>$creat);
         DB::table('reviews')->insert($data);
-        return $data;
-        //return "in";
+        return view('homePage');
     }
 
     /**
