@@ -17,8 +17,10 @@ Route::get('/', function () {
 });
 Route::get('/novelPage', function()
 {
-    return view('novelPage');
+    $content = DB::table('reviews')->get();
+    return view('novelPage',['content'=>$content]);
 });
+
 
 Route::get('/editReview', function()
 {
