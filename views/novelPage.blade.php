@@ -31,79 +31,104 @@
         <a class="py-2 d-none d-md-inline-block" href="#">Point</a>
         <a class="py-2 d-none d-md-inline-block" href="#">Contact</a>
         
+       
+        
+        <a class="nav-item dropdown">
+        
+                        @guest
+                            <a class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </a>
+                        @else
+                            <a class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            
+                        @endguest
+                    </a>
+        
+        
+        
+        <!---tag -->
       </div>
     </nav>
+             
+      <!--cover-->
       
       
     <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
       <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Novel Review</h1>
-        <p class="lead font-weight-normal">review novel of this month</p>
-        <a class="btn btn-outline-secondary" href="#">Sign in</a>
+        <p class="lead font-weight-normal">Novel of this month</p>
+        <a class="btn btn-outline-secondary" href="/editReview">Edit reviews</a>
       </div>
       <div class="product-device shadow-sm d-none d-md-block"></div>
       <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
     </div>
  
       
-      
-      
-    <div class="container">  
-     <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+    <!--content-->  
+    <div class="row">
+      @foreach($content as $key => $data)
+    
+    
+        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <a href="#"><img class="card-img-top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTULu9JaRg80tyM9xqUx7-y7wtsJ9w-5hzxJ0HeYBfNf3VEeC6d" alt=""></a>
             <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
+              <h4 class="card-title">
+                <a href="#">{{$data->nameContent}}</a>
+              </h4>
+              <p class="card-text">{{$data->text_comment}}</p>
             </div>
           </div>
         </div>
+        
+        @endforeach
+    </div> 
+      <!-- /.row -->
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
 
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/500x325" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-      </div> 
+    </div>
+    <!--end content-->
+    
       
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -115,7 +140,7 @@
     <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/holder.min.js"></script>
     <script src="https://blackrockdigital.github.io/startbootstrap-heroic-features/vendor/jquery/jquery.min.js"></script>
     <script src="https://blackrockdigital.github.io/startbootstrap-heroic-features/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+    <script src="https://getbootstrap.com/docs/4.1/assets/js/vendor/jquery-slim.min.js"></script>
     <script>
       Holder.addTheme('thumb', {
         bg: '#55595c',
